@@ -33,7 +33,7 @@ def highpriority():
         handle = win32api.OpenProcess(win32con.PROCESS_ALL_ACCESS, True, pid)
         win32process.SetPriorityClass(handle, win32process.HIGH_PRIORITY_CLASS)
         #Hide terminal window 
-        #Uncomment for exe build
+        #Uncomment for exe build only if your terminal window shows up for some reason
         #terminal_to_hide = win32gui.GetForegroundWindow()
         #win32gui.ShowWindow(terminal_to_hide , win32con.SW_HIDE)
     else:#Apply properties to Linux and Mac

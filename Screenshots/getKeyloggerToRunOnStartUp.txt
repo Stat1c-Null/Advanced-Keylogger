@@ -1,1 +1,0 @@
-To add a program to startup, Press Windows+R to open the “Run” dialog box. Type “shell:startup” and then hit Enter to open the “Startup” folder. Create a shortcut in the “Startup” folder to any file, folder, or program's executable file. It will open on startup the next time you boot.
